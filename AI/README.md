@@ -1,4 +1,6 @@
 # AI ML
 ## 목차
-[1. Introduction to AI](#Introduction-to-AI)
+[Introduction to AI](#Introduction-to-AI)
+[MinMax](#MinMax)
 ## Introduction to AI
+## MinMax
