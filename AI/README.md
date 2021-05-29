@@ -2,19 +2,13 @@
 UCI에서의 AI 수업(CS171 & CS178)의 PPT와 구글링을 결과를 참고하여 작성했습니다.
 </br><br>
 ## 목차
-#### [용어 설명](#용어-설명)
-
-#### [Overfitting](#Overfitting)
-
-#### [Naive Bayes Classifiers](#Naive-Bayes-Classifiers)
-
-#### [Regression](#Regression)
-
-#### [Classification](#Classification)
-
-#### [Neural Network](#Neural-Network)
-
-#### [Reinforcement Learning](#Reinforcement-Learning)
+[용어 설명](#용어-설명)<br>
+[Overfitting](#Overfitting)<br>
+[Naive Bayes Classifiers](#Naive-Bayes-Classifiers)<br>
+[Regression](#Regression)<br>
+[Classification](#Classification)<br>
+[Neural Network](#Neural-Network)<br>
+[Reinforcement Learning](#Reinforcement-Learning)<br>
 </br><br>
 
 ## 용어 설명
