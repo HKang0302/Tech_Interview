@@ -3,7 +3,8 @@
 </br><br>
 ## 목차
 #### [용어 정리](#용어-정리)
-#### [객체 지향 프로그래밍(Object-Oriented Programming)](#객체-지향-프로그래밍(Object--Oriented-Programming))
+#### [객체 지향 프로그래밍](#객체-지향-프로그래밍)
+#### [Extra](#Extra)
 </br><br>
 
 ## 용어 정리
@@ -32,8 +33,8 @@ void staticTest(){
     cout << printStatic() << endl; // 2
 }
 ```
-
-## 객체 지향 프로그래밍(Object-Oriented Programming)
+<br></br>
+## 객체 지향 프로그래밍
 *<span style="color: gray">처음 질문으로 객체지향 프로그래밍이 뭔지 질문하는 경우가 있음. 가장 간단한 질문이며 꼬리질문의 시작을 알리는 것이니 제대로 이해하고 가는 것이 중요!</span>*<br><br>
 프로그래밍에 필요한 데이터를 <span style = "color:red">**추상화**</span>시켜 상태와 행위를 가진 객체를 만들고 객체들간의 유기적인 상호작용을 이용하여 로직을 구성하는 프로그래밍 방법.<br>
 >예를 들어 <span style="color: orange">"바나나"</span>라는 클래스가 있다고 하면 우리는 개념적으로 <span style="color: orange">바나나</span>가 갖고 있는 특징들을 떠올릴 수 있습니다. 껍질은 노란색이고 속은 하얗고 맛은 달고 길쭉한 모양이라는 특징들을요.<br> 
@@ -62,20 +63,34 @@ void staticTest(){
     |public|O|O|O|
     |protected|O|O|X|
     |private|O|X|X|
-  * 상속 시 생기는 접근 지정자의 변화
+  * 상속 시 생기는 자식 class 내의 접근 지정자의 변화
  
-    |   |   상속 TYPE|||
-    |:--:| :--:|:--:|:--:|
-    | |public| protected  |  private |
-    |parent 멤버| |   |   |
-    |^  |   |   |   |
+    |                  | public 상속 |protected 상속| privated 상속|
+    |:----------------:|:----------:|:------------:|:------------:|
+    |**public 부모**   |public       | protected   |  private     |
+    |**protected 부모**|protected    | protected   |  private     |
+    |**private 부모**  |접근 불가     | 접근 불가    |   접근 불가   |
 
+    예시) 아래 코드에서 B class 내부의 p의 접근 제어자는 protected로 변경됨
+    ```
+    class A{
+        public:
+            int p = 0;
+        ...
+    }
+    class B: protected A{
+        ...
+    }
+    ```
+* **다형성(Polymorphism)**: 하나의 객체가 여러 형태를 가질 수 있어 사용이 편리하도록 함
+  * **오버 라이딩(Overriding):** 자식 class는 부모 class로부터 객체의 이름, 타입, 값을 상속받게되는데 자식 class 내에서 재정의하는 것  
+  * **오버 로딩(Overloading):** 같은 함수의 이름을 가지고 있으나 매개변수, 리턴 타입 등의 특징을 다르게 하여 다른 역할을 제공하는 함수를 생성하는 것
+* **상속(Inheritance)**: 앞서 언급한 듯, 상위 클래스(부모 클래스)의 특징을 하위 클래스(자식 클래스)에서 물려받아 <ins>재사용</ins>하면서 더 필요한 속성을 <ins>확장</ins>할 수 있는 특징을 가짐
 
-
-
-
-* 
-#### 접근 지정자
-
+## Extra
+*그냥 내가 정리하고 싶어서 사용하는 파트*
+#### `using namespace`를 사용하지 않는 것이 좋은 이유
+예를 들어 `using namespace A`, `using namespace B`를 선언했다고 하자. 만일 A와 B 라이브러리에 모두 Foo()라는 function이 있다면 코드 내에서 `FOO();`를 사용하였을때 A인지 B인지를 알 수 없기때문에 디버깅에 문제가 생긴다.</br>
+따라서, 최대한 `using namespace A`를 사용하지 않고 `A::Foo()`라고 사용하는 것이 좋다.
 </br><br>
 
