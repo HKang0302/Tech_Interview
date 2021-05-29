@@ -3,6 +3,8 @@
 </br><br>
 ## 목차
 [운영체제란?](#운영체제란?)<br>
+[프로세스](#프로세스)<br>
+[동기화(Syncronization)](#동기화(Syncronization))<br>
 </br><br>
 ## 운영체제란?
 컴퓨터의 H/W와 S/W를 연결하여 통신과 작동을 가능하게하는 소프트웨어 프로그램 (중간매개체)
@@ -29,7 +31,7 @@
 #### 운영체제의 역할
 컴퓨터 자원(CPU 시간, 메모리 공간, 파일 저장공간, input/output, Network) 할당으로 프로그램 개발/실행을 위한 환경을 제공하고, 사용자의 프로그램을 관리하고 [오류](#오류) 방지를 위해 컴퓨터 제어 진행
 **시스템 구성요소에 따른 OS의 역할**
-* **[Process:](#Process와-Thread의-차이)** 실행중인 프로그램의 시스템 작업 단위
+* **[Process:](#Process)** 실행중인 프로그램의 시스템 작업 단위
   * 프로그램은 여러 Process를 필요로 하는데, CPU 시간, 메모리 파일, I/O에 따라 처리 필요
   * 프로세스 관리: 프로세스 생성/제거, 중지, 재개, 동기화, 통신 역할
   * 교착상태 (deadlock) 처리
@@ -51,7 +53,26 @@
 
 #### 오류방지
 
-#### Thread
-##### Process와 Thread의 차이
-* **Process**
-  * 
+## 프로세스
+컴퓨터에서 연속적으로 실행되고 있는 프로그램이며 디스크 메모리에 적재되어 OS로부터 시스템 자원을 할당 받음<br>
+#### 프로세스 구성<br>
+![Process 구성](../img/프로세스구성.png)<br>
+* Stack: 지역 변수와 같이 일시적인 데이터 저장
+* Heap: 코드에서 동적으로 생성되는 데이터 저장 (dynamically allocated memory)
+* Data: 전역 변수나 static 변수 저장
+* Text: 프로그램 코드 (current activity represented by the program counter)
+#### IPC(Inter-Process Communication)
+각 프로세스는 자신만의 메모리가 존재하고 다른 프로세스의 접근으로부터 보호하기 때문에 IPC(Inter-Process Communication)를 통해서만 접근 가능
+![Process 상태](../img/데이터공유.png)<br>
+* **Shared memory(데이터 공유)**: 두 프로세서 간 공유하는 메모리를 만들고 이를 통해 프로세스끼리 데이터 공유
+  * 메모리에 직접 접근하기 때문에 성능이 좋지만 A가 shared memory에 전달을 해도 B가 알 수 없는 [동기화](#동기화(Syncronization)) 문제 발생 가능
+* **Message Passing(메시지 전달)**: Kernel을 이용하여 resource를 전달하는 방식
+  * 커널에서 데이터 송수신을 제어할 수 있어 안전하고 동기화가 가능하지만 커널에서 이루어지기 때문에 성능이 좋지 않음
+  * **통신 방식(직접통신 vs. 간접통신)**
+    * 직접 통신: 두 개의 프로세스 사이에서 통신이 이루어질 때 사용할 수 있는데, 송신자와 수신자의 이름(PID)이 정확히 제시되면 양방향 통신이 가능한 링크가 생성됨 (링크는 하나만 가능)
+    * 간접 통신: 프로세스간에 공유되고있는 메일박스나 포트를 통해 전달되고 단방향/양방향의 링크가 생성됨 (두 프로세스 사이의 링크는 여러개 가능)<br> send(A, message) → mailbox → receive(A, message)
+      * 여러 프로세스가 한 메일박스를 공유하고 있지만, 데이터 전달 진행시에는 한 프로세스에만 전달됨
+#### 프로세스 상태
+![Process 상태](../img/process_status.jpeg)<br>
+
+## 동기화(Syncronization)
