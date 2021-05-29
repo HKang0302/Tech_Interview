@@ -103,6 +103,25 @@
 5. 스케줄링에 따라 다음 프로세스들 진행
 6. 프로세스 A의 차례가 오면 다시 A의 PCB를 불러온 후 A 실행
 
+#### Process Control
+**Child Process:** 프로세스 수행 중에 `folk()`를 통해 생성되는 process
+* OS에서 직접 resource를 받거나 parent process를 통해 자원 획득 가능
+* 자원이 한정되어있어 수많은 child processes를 낳을 수 없음
+* Parent process와 병행으로 진행되며 부모 프로세스는 Child process가 완료될 때까지 `wait()`호출을 통해 기다림
+
+**Process 종료 방식**
+* **Child Process가 부모보다 먼저 종료되는 경우:**
+  * 부모 Process가 `wait` system call을 호출하여 종료된 child processes를 제거함
+  * 부모 Process가 종료될 때 함께 Process Table에서 제거됨
+* **Zombie process:** Child process가 terminated 되어도 Parent process가 아직 수행 중인 경우 Child process는 Process Table에 남아 자원을 계속해서 소모함
+* **Orphan process:** 자식 Process보다 Parent process가 먼저 종료되어 고아가 된 프로세스
+  * 고아 프로세스의 부모를 `init`으로 설정하여 고아를 거두어줌 - Zombie child로 변함
+  * `init`에서 주기적으로 `wait` system call을 하여 zombie process를 정리함
+    * `init`: 부팅시 최초로 실행되는 프로세스
+* **Cascading Termination:** 할당된 자원이 초과되거나 자식의 작업이 더이상 필요없을 경우 자식 프로세스를 강제 종료 시키는 것
+  * 부모가 자식을 강제종료시킬 수 있음
+  * 부모가 강제종료되면 자식도 함께 강제종료됨
+
 #### IPC(Inter-Process Communication)
 각 프로세스는 자신만의 메모리가 존재하고 다른 프로세스의 접근으로부터 보호하기 때문에 IPC(Inter-Process Communication)를 통해서만 접근 가능
 ![Process 상태](../img/process_data_sharing.png)<br>
@@ -143,6 +162,12 @@
   * Round Robin: 각 프로세스마다 같은 time quantum을 설정하여 일정 시간이 지나면 다른 프로세서를 실행시키고 실행중이던 프로세스는 다시 ready queue로 적재
     * 공정한 스케줄링 방법으로, response time(실행할 때까지 기다리는 시간)이 빨라짐
     * Time quantum이 너무 짧으면 overhead가 길어지고, 너무 길면 FCFS와 같아지므로 효율적인 time quantum을 찾는 것이 중요
+
+**Scheduling Queue 종류**
+* **Job Queue:** 프로세스가 시스템에 처음 들어와서 대기하는 큐(ready queue가 수용하지 못할 때)
+* **Ready Queue:** 주기억장치에 적재되어 실행을 기다리는 큐
+* **Device Queue:** 각 장치마다 있으며 장치를 사용하기 위해 기다리는 큐
+* **Waiting Queue:** 특정 이벤트 발생 시 이벤트가 완료될 때까지 기다리는 프로세스를 유지하는 큐
 <br></br>
 
 ## Thread
@@ -173,6 +198,64 @@ Process 내에서 발생하는 하나의 실행 단위(실행 흐름)이며, 한 Process 안에 여러 개
 <br></br>
 
 ## 동기화
+여러 프로세스나 여러 Threads들이 동시에 진행 중일 때, 같은 자원에 접근하여 생기는 문제를 해결하기 위한 방법
+#### Critical Section (임계 영역)
+여러 프로세스가 동시에 같은 자원에 접근하는 영역
+![Prograss Graph](../img/Critical_Section.PNG)<br>
+(H: Head, L: Load, U: Update, S: Save, T: Tail) -- L,U,S가 Critical Section 생성
+* Thread 1이 Critical Section에서 작업 중인 경우, 다른 Threads들은 접근할 수 없도록 해야함
+* Thread 1이 Critical Section 진입 신청 후부터 받아들여질 때까지 다른 Threads들의 critical 진입 횟수를 제한해야함
+
+#### Race Condition
+두 개 이상의 concurrent threads들이 자원에 동시에 접근하려는 상황 (e.g. 현금 출금 at the same time)
+
+**발생 원인**<br>
+* Kernel 작업 중 인터럽트가 발생하여 같은 데이터를 조작
+  * Kernel 모드에서 수행하는 동안 인터럽트를 disable시켜 CPU 제어권을 얻지 못하도록하여 해결
+* Process가 System call을 통해 커널 작업을 하는 도중 context switching이 일어날 때
+  * e.g. P1이 커널모드에서 작업하는 도중, 시간 초과가 되어 CPU의 제어권이 P2로 넘어가 같은 데이터를 조작할 때 P2의 변화가 P1에 영향을 끼치지 않음
+  * 시간 초과가 되어도 다른 CPU로 넘어가지 않도록 하여 해결
+* Multi-Processors 환경에서 두 개의 CPU가 동시에 커널 내부의 공유 데이터에 접근 시
+  * [Lock/Unlock](#Lock)으로 해결
+
+
+#### Lock
+Mutex(= Binary [Semaphore](#세마포어))라고도 하며, Critical Section에 접근하는 thread에 lock을 걸어 다른 threads들이 접근 불가하도록 하고 수행 완료시 unlock
+* 문제: 여러 process들이 동시에 critical section에 진입하는 경우가 발생할 수 있음
+
+
+#### 세마포어
+Multi-Programming 환경에서 공유데이터 접근에 대해 제한하는 방법
+* S: 자원 갯수(S>=0), P(S): 임계구역 진입 전 (S--), V(S): 임계구역에서 나올 때 자원 반납/대기중인 프로세스 깨움(S++)
+* e.g. 프로세스의 S가 1이고, 임계구역을 진입하려는 Thread A&B
+  1. A가 먼저 임계구역에 진입하려고 함 P(S) => S=0
+  2. B가 도착하지만 S가 1이 아니므로 대기(`while`)
+  3. A가 critical section에서 나옴 V(s) ==> S=1
+  4. S=1이므로 자원이 충분하여 B가 대기상태에서 빠져나와 임계구역을 진입하고(P(S) ==> S=0), 수행 완료(V(S) ==> S=1)
+
+#### 교착 상태
+Semaphore 수행 시 일어날 수 있는 문제
+
+**과정**<br>
+1. Process A가 자원 a를 얻고 Process B가 자원 b를 얻음. 이 때, a와 b에 `lock`이 걸림
+2. A가 b를 얻고 싶지만 lock이 걸려있어 기다림
+3. B가 a를 얻고 싶지만 lock이 걸려있어 기다림
+4. 결국 둘다 얻을 수 없어 infinite loop(=**dead lock**)에 걸림
+
+**발생 조건**<br>
+네 가지 조건을 모두 충족해야 deadlock에 걸림
+* **상호 배제(Mutual Exclusion):** 자원은 하나의 프로세스만 점유 가능
+* **점유 대기(Hold & Wait):** 프로세스가 자원을 점유하고 있고, 다른 자원을 점유하려고 할 때 그 자원이 이미 다른 프로세스에 의해 점유되어있는 상황
+* **비선점(Non-Preemptive):** 다른 프로세스에 이미 점유된 자원에 대한 수행이 끝날 때까지 자원 점유 불가능
+* **순환 대기(Circular Wait):** 순환 형태로 자원 대기
+
+**처리 방법**<br>
+* **예방:** 네 가지 조건 중 하나라도 충족하지 않도록 함
+* **회피:** 프로세스가 자원 요구 시, **은행원 알고리즘**으로 회피
+  * 프로세스가 자원을 요구할 때, 자원 점유 시 문제가 없을 지를 먼저 파악하고 안전하면 자원 할당
+* **회복:** 이미 deadlock이 발생했을 경우
+  * 프로세스를 하나씩 종료
+  * Deadlock에 걸린 프로세스를 일시정지시키고, 자원을 다른 프로세스에 할당
 
 ## 메모리
 #### 주기억장치
