@@ -5,6 +5,7 @@
 ## 목차
 [용어 정리](#용어-정리)<br>
 [객체 지향 프로그래밍](#객체-지향-프로그래밍)<br>
+[Compiling Process](#Compiling Process)<br>
 [Pointer & Heap](#Pointer-&-Heap)
 [Extra](#Extra)<br>
 </br><br>
@@ -95,6 +96,21 @@ void staticTest(){
 * **L**SP(Liskov subsitution principle, 리스코브 치환 원칙): 부모 클래스와 자식 클래스 사이의 기능이 일관성있어야함 (상위 클래스에는 추상적인 기능만 있는 것이 좋음)
 * **I**SP(Interface segregation principle, 인터페이스 분리 원칙): 클래스가 사용하지 않는 인터페이스는 구현하지 않아야 하며 의존하지 않아야함 (가능한 최소한의 인터페이스 사용)
 * **D**IP(Dependency inversion principle, 의존 역전 원칙): 상위 레벨 모듈이 하위 레벨 모듈의 구현에 의존하면 안되고, 하위 레벨은 상위 레벨 모듈에서 정의한 추상 타입에 의존해야함
+<br></br>
+## Compiling Process
+![Compiling Process](../img/Compiling_Process.png)<br>
+1. 전처리 과정(preprocessing)
+    * 코드에 `#include`가 있으면 header file 내용 삽입
+    * `#define`이나 `#ifdef`같은 MACRO가 있으면 symbol table에 저장하고 이를 찾으면서 치환
+2. 컴파일 과정(Compiling)
+    * Front-End: 프로그래밍 언어 처리(언어 분석, syntax 분석, 의미 분석 등)
+    * Middle-End: 최적화
+    * Back-End: 최적화 & Assembly Code 생성
+3. Assembling
+    * Binary Code로 변환 후 Object File 생성
+4. Linking
+    * Object code와 라이브러리들을 연결시키는 과정
+    * executable 파일 생성
 
 ## Pointer & Heap
 
