@@ -11,14 +11,14 @@
 </br><br>
 ## 운영체제란?
 컴퓨터의 H/W와 S/W를 연결하여 통신과 작동을 가능하게하는 소프트웨어 프로그램 (중간매개체)
-#### 컴퓨터의 구성 요소
+### 컴퓨터의 구성 요소
 ① H/W &nbsp; ② **운영체제(OS)** &nbsp; ③ 응용 S/W &nbsp; ④ 사용자
-#### 운영체제의 목적
+### 운영체제의 목적
 * 처리 능력, 응답 시간, 신뢰도, 사용가능성을 최적화 시키기 위함
 * 사용자에게 편리함을 위한 컴퓨터 제어
 * 공정하고 효율적인 컴퓨터 자원 할당을 위함
 
-#### 운영체제의 구조
+### 운영체제의 구조
 ![운영체제의 구조](../img/OS_structure.png)<br>
 
 **사용자 영역 vs. 커널 영역**<br>
@@ -31,7 +31,7 @@
   * 운영체제의 CPU제어 시 진입되는 영역이며, 모든 종류의 [명령](#명령)을 실행할 수 있음
   * 모드 비트 0
 
-#### 운영체제의 역할
+### 운영체제의 역할
 컴퓨터 자원(CPU 시간, 메모리 공간, 파일 저장공간, input/output, Network) 할당으로 프로그램 개발/실행을 위한 환경을 제공하고, 사용자의 프로그램을 관리하고 시스템 오류 방지를 위해 컴퓨터 제어 진행
 
 **시스템 구성요소에 따른 OS의 역할**
@@ -55,7 +55,7 @@
   * 공간 관리 및 할당
   * disk scheduling
 
-#### 멀티테스킹 시스템
+### 멀티테스킹 시스템
 **다중 프로그램 시스템**: 여러 프로그램을 동시에 실행하기 위해 메모리에 적재시키고, 하나의 프로그램이 대기상태가 되면 다음 프로그램을 실행
 * [Scheduling](#Process-Scheduling)을 통해 사용자를 대신해 의사를 결정함
 * 프로그램이 대기상태가 되면 다음 프로그램을 선택하여 CPU에 할당 (프로세스 하나씩 진행되지만 빨리 전환되어 멀티테스킹이 되는 것처럼 보임)
@@ -64,14 +64,14 @@
 
 ## 프로세스
 컴퓨터에서 연속적으로 실행되고 있는 프로그램이며 디스크 메모리에 적재되어 OS로부터 시스템 자원을 할당 받음<br>
-#### 프로세스 구성<br>
+### 프로세스 구성<br>
 ![Process 구성](../img/process_structure.png)<br>
 * Stack: 지역 변수와 같이 일시적인 데이터 저장
 * Heap: 코드에서 동적으로 생성되는 데이터 저장 (dynamically allocated memory)
 * Data: 전역 변수나 static 변수 저장
 * Text: 프로그램 코드 (current activity represented by the program counter)
 
-#### PCB (Process Control Block)
+### PCB (Process Control Block)
 [Context Switching](#Context-Switching)에 사용되며 주기억장치에 저장되는 **프로세스 상태 정보 저장공간**으로, 프로세스가 생성될 때 PCB도 함께 생성됨 (각각의 프로세스마다 PCB 보유)
 
 **구조**
@@ -84,7 +84,7 @@
 * Memory Releated Information: 주기억장치 관리에 필요한 정보 (e.g. 레지스터 값)
 * Accounting Information: 통계 정보 (e.g. CPU running time)
 * Status Information related to I/O: 입출력 장치 관련 정보, 파일 목록, ....
-#### Multi-Process<br>
+### Multi-Process<br>
 하나의 프로그램에서 여러개의 process가 동시에 수행되고 각각 다른 task를 수행 (e.g. 크롬창 하나에서는 유튜브 재생, 다른 하나는 공부 블로그 실행)
 
 **특징**
@@ -92,7 +92,7 @@
 * Context Switching할 때 overhead 발생
 * 프로세스마다 다른 메모리를 할당 받았기 때문에 context switching이 발생하면 캐쉬를 초기화하고 캐쉬 정보를 다시 불러와야함 (비효율적) 
 
-#### Context Switching
+### Context Switching
 실행 중인 상태의 Process를 보관하고 새로운 프로세스의 상태를 CPU에 적재시킴 (PCB 업데이트)
 ![Context Switching](../img/Context-Switching.png)<br>
 1. 프로세스 A 실행 중 [interrupt](#I/O-Interrupt)나 system call이 걸려 ready 상태로 변함 (A의 PCB에 상태 저장)
@@ -102,7 +102,7 @@
 5. 스케줄링에 따라 다음 프로세스들 진행
 6. 프로세스 A의 차례가 오면 다시 A의 PCB를 불러온 후 A 실행
 
-#### Process Control
+### Process Control
 **Child Process:** 프로세스 수행 중에 `folk()`를 통해 생성되는 process
 * OS에서 직접 resource를 받거나 parent process를 통해 자원 획득 가능
 * 자원이 한정되어있어 수많은 child processes를 낳을 수 없음
@@ -121,7 +121,7 @@
   * 부모가 자식을 강제종료시킬 수 있음
   * 부모가 강제종료되면 자식도 함께 강제종료됨
 
-#### IPC(Inter-Process Communication)
+### IPC(Inter-Process Communication)
 각 프로세스는 자신만의 메모리가 존재하고 다른 프로세스의 접근으로부터 보호하기 때문에 IPC(Inter-Process Communication)를 통해서만 접근 가능
 ![Process 상태](../img/process_data_sharing.png)<br>
 * **Shared memory(데이터 공유)**: 동일 시스템 내의 두 프로세서 간 공유하는 메모리를 만들고 이를 통해 프로세스끼리 데이터 공유
@@ -136,7 +136,7 @@
   * Client-Server형태로 두 프로세스가 데이터 통신 진행
 
 
-#### 프로세스 상태
+### 프로세스 상태
 ![Process 상태](../img/process_status.jpeg)<br>
 1. 사용자에 의해 새로운 Process가 생성되고 **ready** 상태가 됨
 2. 스케줄러가 프로세서의 실행 시간을 설정(Scheduling)
@@ -146,7 +146,7 @@
 6. waiting 상태에서 프로세스가 기다리던 작업이 끝나면 다시 **ready**상태로 돌아감
 7. 프로세스의 모든 작업이 끝나면 프로세스가 **terminate**됨
 
-#### Process Scheduling
+### Process Scheduling
 새로운 process가 생성되면 scheduler가 효율성을 위해 규칙에 따라 scheduling을 함(ready queue 스케줄링)
 
 **Scheduling 발생 상황**<br>
@@ -184,7 +184,7 @@ Process 내에서 발생하는 하나의 실행 단위(실행 흐름)이며, 한 Process 안에 여러 개
 * Thread 별로 PC Register을 갖고 있는데, 이는 Scheduling으로 인해 수행이 중간에 일시정지되는 경우 현재의 수행 상황을 저장하는데에 쓰임
 <br></br>
 
-#### Multi-Thread
+### Multi-Thread
 *Multi Process와 비교*
 하나의 응용프로그램에서 여러 개의 Threads를 사용하여 각 Threads로 하여금 하나의 task 처리
 
@@ -201,14 +201,14 @@ Process 내에서 발생하는 하나의 실행 단위(실행 흐름)이며, 한 Process 안에 여러 개
 
 ## 동기화
 여러 프로세스나 여러 Threads들이 동시에 진행 중일 때, 같은 자원에 접근하여 생기는 문제를 해결하기 위한 방법
-#### Critical Section (임계 영역)
+### Critical Section (임계 영역)
 여러 프로세스가 동시에 같은 자원에 접근하는 영역
 ![Prograss Graph](../img/Critical_Section.PNG)<br>
 (H: Head, L: Load, U: Update, S: Save, T: Tail) -- L,U,S가 Critical Section 생성
 * Thread 1이 Critical Section에서 작업 중인 경우, 다른 Threads들은 접근할 수 없도록 해야함
 * Thread 1이 Critical Section 진입 신청 후부터 받아들여질 때까지 다른 Threads들의 critical 진입 횟수를 제한해야함
 
-#### Race Condition
+### Race Condition
 두 개 이상의 concurrent threads들이 자원에 동시에 접근하려는 상황 (e.g. 현금 출금 at the same time)
 
 **발생 원인**<br>
@@ -221,12 +221,12 @@ Process 내에서 발생하는 하나의 실행 단위(실행 흐름)이며, 한 Process 안에 여러 개
   * [Lock/Unlock](#Lock)으로 해결
 
 
-#### Lock
+### Lock
 Mutex(= Binary [Semaphore](#세마포어))라고도 하며, Critical Section에 접근하는 thread에 lock을 걸어 다른 threads들이 접근 불가하도록 하고 수행 완료시 unlock
 * 문제: 여러 process들이 동시에 critical section에 진입하는 경우가 발생할 수 있음
 
 
-#### 세마포어
+### 세마포어
 Multi-Programming 환경에서 공유데이터 접근에 대해 제한하는 방법
 * S: 자원 갯수(S>=0), P(S): 임계구역 진입 전 (S--), V(S): 임계구역에서 나올 때 자원 반납/대기중인 프로세스 깨움(S++)
 * e.g. 프로세스의 S가 1이고, 임계구역을 진입하려는 Thread A&B
@@ -235,7 +235,7 @@ Multi-Programming 환경에서 공유데이터 접근에 대해 제한하는 방법
   3. A가 critical section에서 나옴 V(s) ==> S=1
   4. S=1이므로 자원이 충분하여 B가 대기상태에서 빠져나와 임계구역을 진입하고(P(S) ==> S=0), 수행 완료(V(S) ==> S=1)
 
-#### 교착 상태
+### 교착 상태
 Semaphore 수행 시 일어날 수 있는 문제
 
 **과정**<br>
@@ -265,7 +265,7 @@ Semaphore 수행 시 일어날 수 있는 문제
 * CPU에서 요청하는 데이터의 주소를 메모리로 보내면 메모리는 주소를 통해 데이터를 받아 CPU로 전해줌
 * CPU에서의 계산 결과를 메모리의 특정 주소에 저장
 
-#### MMU(Memory Management Unit)
+### MMU(Memory Management Unit)
 메모리 보호나 캐쉬관리 등 CPU가 메모리에 접근하는 것을 관리하는 H/W
 
 **물리 주소:** MMU에서 CPU로 보내는 주소
@@ -278,7 +278,7 @@ Semaphore 수행 시 일어날 수 있는 문제
 * 메모리의 빈 공간을 찾아 주소의 영역을 정해주고 메모리 관리
 * **Contiguous Allocation(연속 메모리 할당)**: 논리 주소가 연속이면 물리 주소도 연속. 즉, 프로세스 하나를 메모리에 분할하여 적재 불가능
 
-#### 단편화
+### 단편화
 프로세스들이 메모리에 적재되어있다가 제거되는 과정이 반복되면서 free space가 늘어나는 현상
 
 **단편화 종류**
@@ -290,7 +290,7 @@ Semaphore 수행 시 일어날 수 있는 문제
 * **Best Fit:** 가급적 가장 잘 맞는 공간에 적재 -- 메모리 전체 search 필요
 * **Worst Fit:** 가장 큰 남는 공간에 적재
 
-#### Paging
+### Paging
 프로세스를 일정 단위로 나누어 메모리에 적재함으로써 외부 단편화
 ![Paging](../img/Paging.gif)<br>
 * 프로세스를 일정 크기의 page로 잘라서 메모리에 적재(연속적 메모리 할당 X)
@@ -326,7 +326,7 @@ Semaphore 수행 시 일어날 수 있는 문제
 * 빈 frame이 없는 상태에서 victim page를 비울 때와 원하는 page를 frame으로 올리는 과정에서 2번 overhead 발생
 * 최소한의 page replacement 필요 -> 상황에 따른 최적의 algorithm 선택이 중요
 
-#### 메모리 낭비 방지
+### 메모리 낭비 방지
 **로딩:** 프로그램(실행파일)을 메모리에 적재시키는 것<br>
 **부팅:** OS를 메모리에 적재시키는 것
 
@@ -337,7 +337,7 @@ Semaphore 수행 시 일어날 수 있는 문제
 
 **Swapping:** 메모리에 적재되어있지만 사용하지 않는 프로세스를 보조기억장치로 옮긴 후(**Swap-out**), 이 후에 다시 주기억장치에 적재(**Swap-in**)하여 실행 재개. 프로세스가 들어갈 공간이 없을 때 사용되며, 보조기억장치를 사용하기 때문에 context switching 시간이 오래 걸림.
 
-#### Cache
+### Cache
 주기억장치에 저장된 내용의 일부를 임시로 저장해주는 장치이며, 메인 메모리에 직접 접근하는 것은 비효율적이므로 CPU와 메인 메모리의 속도를 맞추기 위해 사용<br>
 Hit/Miss를 사용해서 관리<br>
 **지역성의 원리:** 적중률(Hit rate)를 극대화 시키기 위한 방법
@@ -348,11 +348,11 @@ Hit/Miss를 사용해서 관리<br>
 <br></br>
 
 ## I/O 장치
-#### 입출력 시스템의 구성
+### 입출력 시스템의 구성
 * 입출력 장치는 장치 제어기와 연결되는데 장치 제어기는 시스템 버스와 연결되어있음
 * 응용 프로그램이 시스템 콜을 호출하면 커널의 디바이스 드라이버에게 전달되고 하드웨어인 장치제어기와 명령 및 정보를 주고 받으며 작업을 수행하면서 입출력 장치가 통제됨
 
-#### 입출력 방식
+### 입출력 방식
 **직접 입출력 방식**<br>
 * CPU가 직접 주관하여 입출력을 수행하는 방식으로 효율적이지 못함
 * 폴링과 인터럽트 방식이 있음
@@ -366,7 +366,7 @@ Hit/Miss를 사용해서 관리<br>
   3. 입출력 프로세서로부터 입출력 완료 신호가 인터럽트 방식으로 CPU에게 보고
   4. CPU는 현재 수행 중인 프로그램을 잠시 중단하고 입출력이 발생했던 최초의 프로그램 수행을 다시 재개하여 먼저 처리해줌
 
-#### I/O Interrupt
+### I/O Interrupt
 **과정**
 1. I/O를 시작하기 위해 CPU가 장치제어기 내에 있는 register에 적절한 데이터 적재
 2. 어떤 action을 취할지 파악/결정
@@ -376,7 +376,7 @@ Hit/Miss를 사용해서 관리<br>
 * 동기식 입출력: 입출력이 시작되면 완료될 때까지 기다림
 * 비동기식 입출력: 입출력이 시작되어도 진행 중이던 작업 계속 수행
 
-#### DMA(Direct Memory Access)
+### DMA(Direct Memory Access)
 CPU를 대신하여 I/O장치와 메모리 사이의 데이터 전송을 담당하는 장치
 
 **특징**<br>
@@ -392,13 +392,13 @@ CPU를 대신하여 I/O장치와 메모리 사이의 데이터 전송을 담당하는 장치
 4. ACK를 받은 주변 장치는 데이터 버스를 통해 데이터 전송
 5. CPU와 DMA가 동시에 버스를 사용하고자 하는 경우, 속도가 빠른 CPU가 DMA에게 한 메모리 사이클 동안 버스 사용권을 먼저 줌 (cycle stealing)
 
-#### 입출력 버퍼링
+### 입출력 버퍼링
 버퍼링은 한 작업의 연상과 함께 입출력을 동시에 수행하는 방법으로 CPU와 입출력장치 간의 속도차이를 줄이기 위한 방식<br>
 버퍼를 통해 데이터를 미리 읽어놓은 후 필요할 때마다 사용하므로써 효율성 높이는 방식
 
 **과정**<br>
 1. I/O 장치로 데이터 입력 후, CPU가 연산하려고 하는 순간 입력 장치가 다음 입력을 시작
 2. 입력 버퍼링이 프로세스가 데이터를 요구하기 전에 입력 장치의 데이터를 주기억장치(버퍼)에 복사
-#### Spooling
+### Spooling
 디스크를 매우 큰 버퍼처럼 사용하여 다수의 프로세스들이 입출력 장치를 서로 요구하나 실제로 그 장치의 수가 제한되어 있을 때 공유를 위해 가상 장치를 각 프로세스에 제공<br>
 출력 장치로 갈 데이터를 보조기억장치에 잠깐 기억시켰다가 CPU가 다른 일을 처리하면서 사이사이에 조금씩 출력장치로 보내주어 정체 작업의 효율을 향상시키는 방식
