@@ -117,13 +117,13 @@
 
 **TCP(Transmission Control Protocol)**
   * **연결형 서비스**로 가상 회선 방식 사용 (*발신지와 수신지를 연결하여 패킷을 전송하기 위한 논리적 경로 배정*)
-    * **3-way Handshaking:** Client와 Server 연결 시 발생
+    * **3-way Handshaking:** Client와 Server 연결 시 발생<br>
       ![3-way Handshaking](../img/3Way.png)<br>
       * SYN(Synchronize sequence number), ACK(Acknowledge)
       1. Client가 Server로 접속 요청(`SYN`)을 보내고 응답을 기다림
       2. Server가 SYN요청을 받고 요청을 수락하는 `ACK`와 `SYN` Flag가 설정된 패킷을 Client로 전송 후 Client가 응답하기를 기다림
       3. Client가 Server로 `ACK`를 전송하여 Client와 Server의 연결이 수립됨
-    * **4-way Handshaking:** 세션 종료 시 발생
+    * **4-way Handshaking:** 세션 종료 시 발생<br>
       ![4-way Handshaking](../img/4Way.png)<br>
       * FIN
       1. Client가 Server에게 세션 종료를 알리는 `FIN`을 전송
