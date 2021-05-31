@@ -14,7 +14,7 @@
 </br><br>
 
 ## 네트워크 기본
-#### 네트워크란?
+### 네트워크란?
 이름 그대로 다른 컴퓨터들과 같은 망(Net)으로 묶여 정보 공유와 같은 작업(Work)을 진행하는 것
 
 **네트워크 주요 범주**<br>
@@ -24,7 +24,7 @@
 **인터넷이란?**<br>
 여러 개의 네트워크가 연결되어있는 네트워크간의 네트워크
 
-#### 웹 동작 방식
+### 웹 동작 방식
 ![Web Process](../img/web_process.png)<br>
 1. 사용자가 브라우저에 URL 입력
 2. 브라우저는 [DNS](#DNS)를 통해 서버의 IP 주소를 찾음
@@ -35,7 +35,7 @@
 7. TCP/IP를 통해 요청한 컴퓨터로 HTTP 응답 메세지 전달
 8. 응답 메세지는 웹페이지 데이터로 변환하고 브라우저에 출력되어 사용자가 보게 됨
 
-#### 통신 제어 방식
+### 통신 제어 방식
 *TCP 통신만 해당*
 
 **흐름 제어(Flow Control)**<br>
@@ -78,11 +78,11 @@
 국제표준화기구(ISO)에서 개발하여, 네트워크의 프로토콜과 디자인은 계층으로 나누어 정리한 것
 
 ![OSI 7 Layers](../img/OSI7Layers.png)<br>
-#### Physical Layer
+### Physical Layer
 * Data Link Layer에서 받은 데이터를 bit 단위(Binary data type)로 변환하여 다른 장치로 전송
 * 두 장치간의 통신 상태에 대한 데이터 추가
 
-#### Data Link Layer
+### Data Link Layer
 **Sender:** Network Layer의 정보를 받아 Header(송신자, 수신자의 물리적 주소(MAC Address))과 tail을 붙여 프로토콜에 맞는 frame을 완성시킴<br>
 **Receiver:** 전송에러가 없는지를 파악하고 Network Layer로 전달<br>
 
@@ -98,7 +98,7 @@
 * **Filtering:** 해당 목적지로 가는 포트를 제외하고 모든 포트를 차단
 * **Aging:** 일정시간동안 사용되지 않는 MAC 주소를 Table에서 삭제
 
-#### Network Layer
+### Network Layer
 패킷의 발신지에서 수신지로의 전달 경로를 결정하는 역할<br>발신지와 수신지의 논리적 주소를 헤더에 추가 [IP|TCP|DATA]
 
 **경로 제어(Routing):** 발신지에서 수신지까지의 경로가 여러 개일 때, 라우터에서 패킷 전송이 가능한 최적의 경로를 결정
@@ -106,7 +106,7 @@
 * 목적지가 불분명할 경우 스위치와 다르게 데이터를 가차없이 무시
 * 브로드캐스트 도메인 구분 가능 (Switch는 불가능)
 
-#### Transport Layer
+### Transport Layer
 컴퓨터의 특정 프로세스와 다른 장치의 프로세스간의 논리적 통신(Logical Communication)이 가능하도록 전달하는 레이어
 
 **특징**
@@ -145,7 +145,7 @@
   * 하나의 소켓으로 여러 client 정보 획득 가능
   * overhead가 매우 적음
 
-#### Session Layer
+### Session Layer
 응용프로그램간의 연결을 성립하게하고 연결이 안정적으로 유지될 수 있도록 유지관리하고, 작업 완료 후 연결을 끊는 역할
 **세션:** 방문자가 웹 서버에 접속되어있는 상태를 하나의 세션이라고 함
 
@@ -155,7 +155,7 @@
 * **대화 관리:** 토큰을 사용하여 데이터를 교환하게 되는데, 토큰을 가졌을 때만 전송이 가능하여 동기화를 통한 에러 제어가 가능함
 * **에러 복구:** 에러에 의해 중단된 대화에 대해 처음부터 전송을 다시 시작함
 
-#### Presentation Layer
+### Presentation Layer
 프로그램마다 다른 데이터 표현 방식을 사용하는데 이를 하나의 통일된 구문 형식으로 변환
 
 **주요 기능**
@@ -164,7 +164,7 @@
 * 압축
 * 코드 변환: 서로 다른 부호화 방식간의 호환성 제공
 
-#### Application Layer
+### Application Layer
 사용자 인터페이스 제공 e.g.) HTTP, Telnet, DNS
 
 **HTTP(HyperText Transfer Protocol)** => 웹의 3요소: HTTP(통신 규약), HTML(전송 문서), URL(주소)
