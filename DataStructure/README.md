@@ -1,6 +1,12 @@
 # Data Structure
 수업 내용과 구글링 정보를 참고하여 작성하였습니다. 삽입한 그림은 현재는 모두 다른 웹사이트에서 불러왔으며 출처는 적지 않았으나 추후에 출처를 기입하거나 직접 그림을 올릴 예정입니다.
 
+<details>
+<summary>접기/펼치기</summary>
+<div markdown="1">
+ㅇㄹ너ㅣ아러
+</details>
+
 *HashTable vs. HashMap vs. TreeMap, List vs. Set*
 </br><br>
 ## 목차
