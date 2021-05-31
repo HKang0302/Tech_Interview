@@ -124,7 +124,7 @@
       2. Server가 SYN요청을 받고 요청을 수락하는 `ACK`와 `SYN` Flag가 설정된 패킷을 Client로 전송 후 Client가 응답하기를 기다림
       3. Client가 Server로 `ACK`를 전송하여 Client와 Server의 연결이 수립됨
     * **4-way Handshaking:** 세션 종료 시 발생<br>
-      ![4-way Handshaking](../img/4Way.png)<br>
+      ![4-way Handshaking](../img/4way.png)<br>
       * FIN
       1. Client가 Server에게 세션 종료를 알리는 `FIN`을 전송
       2. Server가 Client에게 `ACK`를 보내고 `TIME_WAIT`을 걸어 App 종료시까지 대기
@@ -178,8 +178,8 @@
   2. Client에서 Server로 HTTP 메시지 전송 (HTTP Request)
   3. Server에 의해 전송된 응답을 읽어들임 (HTTP Response)
   4. 연결을 닫거나 다른 요청을 위해 재사용
-* **HTTP Request**
-  ![HTTP Request](../img/HTTP_request.png)<br>
+* **HTTP Request**<br>
+  ![HTTP Request](../img/HTTP_Request.png)<br>
   * **GET:** 데이터 조회 요청 시 사용
     * 데이터를 헤더에 추가하여 전송 (바디는 비워진 채로 전송)
     * URL에 데이터가 노출되기 때문에 보안적으로 중요한 데이터를 포함하면 안되며 길이제한이 있음
@@ -192,7 +192,7 @@
     * 캐싱 불가능, Non-Idempotent (요청마다 다른 응답이 돌아옴)
     * 클라이언트는 데이터를 인코딩해서 서버로 전송, 서버는 데이터를 디코딩
 
-* **HTTP Response**
+* **HTTP Response**<br>
   ![HTTP Response](../img/HTTP_Response.png)<br>
   * 요청 성공 여부와 상태 코드 등 응답에 필요한 메세지 내용 정리하여 클라이언트로 송신
 
