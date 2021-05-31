@@ -2,9 +2,18 @@
 수업 내용과 구글링 정보를 참고하여 작성하였습니다. 삽입한 그림은 현재는 모두 다른 웹사이트에서 불러왔으며 출처는 적지 않았으나 추후에 출처를 기입하거나 직접 그림을 올릴 예정입니다.
 
 <details>
-<summary>접기/펼치기</summary>
+<summary>예상 문제 접기/펼치기</summary>
 <div markdown="1">
-ㅇㄹ너ㅣ아러
+1. Array와 Linked List의 차이<br>
+&nbsp; &nbsp;1-1. 각각의 장단점
+&nbsp; &nbsp;1-2. Array와 Linked List의 시간복잡도 차이<br>
+&nbsp; &nbsp;1-3. 어디에서 사용되는가<br>
+2. 스택과 큐의 차이<br>
+&nbsp; &nbsp;2-1. 어느 메모리에 저장되는가
+&nbsp; &nbsp;2-2. 어디에서 사용되는가
+3. List, Set, Map의 차이
+&nbsp; &nbsp;3-1. 각각의 장단점
+</div>
 </details>
 
 *HashTable vs. HashMap vs. TreeMap, List vs. Set*
@@ -12,9 +21,10 @@
 ## 목차
 [자료구조란?](#자료구조란?)<br>
 [Array, LinkedList, ArrayList](#Array,-LinkedList,-ArrayList)<br>
-[스택, 큐, 트리, 힙](#스택,-큐,-트리,-힙)<br>
+[스택, 큐](#스택,-큐)<br>
 [List, Set, Map](#List,-Set,-Map)<br>
 [Tree](#Tree)<br>
+[Heap](#Heap)<br>
 [Hash](#Hash)<br>
 [Graph](#Graph)<br>
 </br><br>
@@ -45,6 +55,8 @@ Array와 같이 물리적 주소와 논리적 주소가 일치하지만 크기 변경이 가능함
 * 삭제하거나 중간에 삽입하는 것은 배열보다 훨씬 간단함 (시간복잡도: `O(1)`)
 * Tree 구조에서 자주 사용됨
 * Heap 메모리 섹션에 할당
+
+<a href="#">위로</a>
 <br></br>
 
 ## 스택, 큐, 트리, 힙
