@@ -7,6 +7,9 @@
 1. Sort 설명<br>
 &nbsp; &nbsp;1-1. 시간 복잡도<br>
 &nbsp; &nbsp;1-2. 손코딩<br>
+2. 다익스트라 설명<br>
+&nbsp; &nbsp;1-1. 시간 복잡도<br>
+&nbsp; &nbsp;1-2. 손코딩<br>
 </div>
 </details>
 </br><br>
@@ -140,6 +143,7 @@ Heapify를 통한 정렬
 	    }
     }
     ```
+[위로](#목차)
 <br></br>
 
 ## Shortest Path
@@ -172,6 +176,9 @@ Heapify를 통한 정렬
 					    Pw = v
 				    enqueue w into pq with Dw
     ```
+[위로](#목차)
 <br></br>
 
 ## Others
+[위로](#목차)
+<br></br>
