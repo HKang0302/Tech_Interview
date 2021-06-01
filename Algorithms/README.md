@@ -140,4 +140,38 @@ Heapify를 통한 정렬
 	    }
     }
     ```
+<br></br>
 
+## Shortest Path
+### DFS vs. BFS
+* **DFS:** Stack을 사용하여 모든 경로를 탐색할 때 사용
+* **BFS:** Queue를 사용하여 최단 거리 경로를 탐색할 때 사용
+
+### Dijkstra Algorithm
+*Similar to Prim Algorithm*<br>
+노드와 각 노드로의 거리가 주어진 graph에서 사용. 특정 노드에서 시작하여 최단 거리 찾을 때 사용
+
+* **Priority Queue** 사용
+* 시간복잡도: `O(|E|log|V|)`
+* Algorithm
+    ```
+    Dijkstra(Graph):
+	    for each vertex v:
+		    let Kv be false
+		    let Pv be unknown
+		    let Dv be INFINITY
+	    let pq be an empty priority queue
+	    pq.enqueue(start vertex)
+	    while(pq is not empty):
+		    vertex v = dequeue from pq
+		    if Kv is false:
+			    Kv = true
+			    for each vertex w:v->w:
+				    if(Dw>Dv+D(v,w)):
+					    Dw = Dv + D(v,w)
+					    Pw = v
+				    enqueue w into pq with Dw
+    ```
+<br></br>
+
+## Others
