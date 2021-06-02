@@ -1,5 +1,26 @@
 # OS 운영체제
 수업 내용과 구글링 정보를 참고하여 작성하였습니다. 삽입한 그림은 현재는 모두 다른 웹사이트에서 불러왔으며 출처는 적지 않았으나 추후에 출처를 기입하거나 직접 그림을 올릴 예정입니다.
+
+<details>
+<summary>예상 문제 접기/펼치기</summary>
+<div markdown="1">
+1. 운영체제란?<br>
+&nbsp; &nbsp;1-1. 주요 목적<br>
+&nbsp; &nbsp;1-2. 사용자 영역 vs. 커널 영역<br>
+2. 프로세스<br>
+&nbsp; &nbsp;2-1. 프로세스의 특징<br>
+&nbsp; &nbsp;2-2. 프로세스의 통신과 방식<br>
+3. 스레드<br>
+&nbsp; &nbsp;3-1. 스레드의 특징<br>
+&nbsp; &nbsp;3-2. 프로세스와 스레드의 차이<br>
+&nbsp; &nbsp;3-3. 스레드 장점<br>
+3. 스케줄링<br>
+&nbsp; &nbsp;3-1. 멀티프로그래밍, 멀티프로세스, 멀티스레드의 차이와 장단점<br>
+&nbsp; &nbsp;3-2. <br>
+</div>
+</details>
+</br><br>
+
 </br><br>
 ## 목차
 [운영체제란?](#운영체제란?)<br>
@@ -65,7 +86,7 @@
 ## 프로세스
 컴퓨터에서 연속적으로 실행되고 있는 프로그램이며 디스크 메모리에 적재되어 OS로부터 시스템 자원을 할당 받음<br>
 ### 프로세스 구성<br>
-![Process 구성](../img/process_structure.png)<br>
+![Process 구성](../img/process_structure.PNG)<br>
 * Stack: 지역 변수와 같이 일시적인 데이터 저장
 * Heap: 코드에서 동적으로 생성되는 데이터 저장 (dynamically allocated memory)
 * Data: 전역 변수나 static 변수 저장
@@ -74,7 +95,7 @@
 ### PCB (Process Control Block)
 [Context Switching](#Context-Switching)에 사용되며 주기억장치에 저장되는 **프로세스 상태 정보 저장공간**으로, 프로세스가 생성될 때 PCB도 함께 생성됨 (각각의 프로세스마다 PCB 보유)
 
-**구조**
+**구조**<br>
 ![PCB 구조](../img/PCB.jpeg)<br>
 * Process ID: Process의 고유 번호 (각 프로세스마다 다른 번호 보유)
 * Process State: Process의 현재 상태
@@ -178,10 +199,12 @@
 Process 내에서 발생하는 하나의 실행 단위(실행 흐름)이며, 한 Process 안에 여러 개의 thread 존재
 
 **특징**
+* Thread는 Thread ID, 프로그램 카운터, 레지스터 세트 및 스택으로 구성되어있음
 * Process와 Heap, Data, Code를 공유하고, 각 Thread마다 자신만의 Stack을 갖고 있음
 * 각 Thread끼리는 Heap을 공유하지만 Process는 공유하지 않음
 * 한 thread가 자원을 변경하면 다른 threads들에게도 영향이 끼침
 * Thread 별로 PC Register을 갖고 있는데, 이는 Scheduling으로 인해 수행이 중간에 일시정지되는 경우 현재의 수행 상황을 저장하는데에 쓰임
+* 스레드가 프로세스보다 생성할 때 오버헤드가 적어서 효율적이고 병렬성을 높일 수 있음
 <br></br>
 
 ### Multi-Thread

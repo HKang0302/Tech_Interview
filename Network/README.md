@@ -1,5 +1,26 @@
 # Network
 수업 내용과 구글링 정보를 참고하여 작성하였습니다. 삽입한 그림은 현재는 모두 다른 웹사이트에서 불러왔으며 출처는 적지 않았으나 추후에 출처를 기입하거나 직접 그림을 올릴 예정입니다.
+
+<details>
+<summary>예상 문제 접기/펼치기</summary>
+<div markdown="1">
+1. 네트워크란? 인터넷이란?<br>
+&nbsp; &nbsp;1-1. DNS란?<br>
+&nbsp; &nbsp;1-2. IP란?<br>
+&nbsp; &nbsp;1-3. 패킷이란?<br>
+2. 웹 동작 방식<br>
+3. TCP/IP 계층과 OSI 7 Layers<br>
+&nbsp; &nbsp;3-1. 레이어별 설명<br>
+&nbsp; &nbsp;3-2. 전송오류 종류와 해결방법<br>
+&nbsp; &nbsp;3-3. 스위칭이란<br>
+4. TCP/UDP<br>
+&nbsp; &nbsp;4-1. handshaking<br>
+&nbsp; &nbsp;4-2. 통신제어 (흐름제어, 혼잡제어)<br>
+5. HTTP/HTTPS<br>
+</div>
+</details>
+</br><br>
+
 </br><br>
 ## 목차
 [네트워크 기본](#네트워크-기본)<br>
