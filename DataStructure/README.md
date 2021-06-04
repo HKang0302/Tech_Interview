@@ -12,9 +12,16 @@
 &nbsp; &nbsp;2-1. 어느 메모리에 저장되는가<br>
 &nbsp; &nbsp;2-2. 어디에서 사용되는가<br>
 3. 트리<br>
-4. 힙<br>
+&nbsp; &nbsp;3-1. Binary Tree<br>
+&nbsp; &nbsp;3-2. Heap<br>
+4. Binary Search Tree<br>
+&nbsp; &nbsp;4-1. AVL Tree<br>
+&nbsp; &nbsp;4-2. B Tree<br>
 5. List, Set, Map의 차이<br>
-&nbsp; &nbsp;3-1. 각각의 장단점
+&nbsp; &nbsp;3-1. 각각의 장단점<br>
+6. Graph<br>
+&nbsp; &nbsp;6-1. DFS/BFS<br>
+&nbsp; &nbsp;6-2. Minimum Spanning Tree<br>
 </div>
 </details>
 

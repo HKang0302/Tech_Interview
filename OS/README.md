@@ -16,7 +16,21 @@
 &nbsp; &nbsp;3-3. 스레드 장점<br>
 3. 스케줄링<br>
 &nbsp; &nbsp;3-1. 멀티프로그래밍, 멀티프로세스, 멀티스레드의 차이와 장단점<br>
-&nbsp; &nbsp;3-2. <br>
+&nbsp; &nbsp;3-2. 오버헤드<br>
+&nbsp; &nbsp;3-3. 선점, 비선점<br>
+4. 동기화란?
+&nbsp; &nbsp;4-1. Race Condition<br>
+&nbsp; &nbsp;4-2. Lock<br>
+&nbsp; &nbsp;4-3. 세마포어<br>
+&nbsp; &nbsp;4-4. deadlock<br>
+5. 메모리란?
+&nbsp; &nbsp;5-1. 실행파일 생성 과정<br>
+&nbsp; &nbsp;5-2. MMU란? 물리 주소 vs. 논리 주소<br>
+&nbsp; &nbsp;5-3. 단편화: 내부 단편화 vs. 외부 단편화<br>
+&nbsp; &nbsp;5-4. 페이징<br>
+&nbsp; &nbsp;5-5. 가상메모리<br>
+&nbsp; &nbsp;5-6. 동적 적재, 동적 연결, swapping<br>
+&nbsp; &nbsp;5-7. Cache<br>
 </div>
 </details>
 </br><br>

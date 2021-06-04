@@ -6,7 +6,7 @@
 <div markdown="1">
 1. 네트워크란? 인터넷이란?<br>
 &nbsp; &nbsp;1-1. DNS란?<br>
-&nbsp; &nbsp;1-2. IP란?<br>
+&nbsp; &nbsp;1-2. TCP/IP란?<br>
 &nbsp; &nbsp;1-3. 패킷이란?<br>
 2. 웹 동작 방식<br>
 3. TCP/IP 계층과 OSI 7 Layers<br>
@@ -17,11 +17,12 @@
 &nbsp; &nbsp;4-1. handshaking<br>
 &nbsp; &nbsp;4-2. 통신제어 (흐름제어, 혼잡제어)<br>
 5. HTTP/HTTPS<br>
+&nbsp; &nbsp;5-1. GET vs. POST<br>
+&nbsp; &nbsp;5-2. HTTPS 암호화<br>
 </div>
 </details>
 </br><br>
 
-</br><br>
 ## 목차
 [네트워크 기본](#네트워크-기본)<br>
 [OSI 7 Layers](#OSI-7-Layers)
@@ -239,3 +240,4 @@
   2. 브라우저가 DNS에 접속해서 도메인 이름을 통해 IP 주소 요청
   3. 획득한 IP를 사용해서 브라우저가 컴퓨터와 통신하고 사용자 요청 페이지를 컴퓨터에 요청
   4. 브라우저에 요청 화면 표시
+     

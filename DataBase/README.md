@@ -1,8 +1,38 @@
 # Database
 수업 내용과 구글링 정보를 참고하여 작성하였습니다. 삽입한 그림은 현재는 모두 다른 웹사이트에서 불러왔으며 출처는 적지 않았으나 추후에 출처를 기입하거나 직접 그림을 올릴 예정입니다.
 
-*고립수준, SQL, NoSQL 관련 자료 추후 추가 예정*
+<details>
+<summary>예상 문제 접기/펼치기</summary>
+<div markdown="1">
+1. DB란? DBMS란? RDBMS란?<br>
+&nbsp; &nbsp;1-1. DB의 특징<br>
+&nbsp; &nbsp;1-2. Schema란<br>
+&nbsp; &nbsp;1-3. DBMS 사용 언어<br>
+&nbsp; &nbsp;1-4. Connection Pool이란?<br>
+&nbsp; &nbsp;1-5. View란?<br>
+2. 인덱스란?
+&nbsp; &nbsp;2-1. 인덱스 사용 자료구조<br>
+&nbsp; &nbsp;2-2. b+ 트리의 장점<br>
+3. 정규화란?
+&nbsp; &nbsp;3-1. 장점과 단점<br>
+&nbsp; &nbsp;3-2. 1NF, 2NF, 3NF, BCNF<br>
+4. 트랜젝션이란?
+&nbsp; &nbsp;4-1. 사용 언어(TCL)<br>
+&nbsp; &nbsp;4-2. ACID<br>
+&nbsp; &nbsp;4-3. 트랜젝션 시 발생 가능 문제<br>
+&nbsp; &nbsp;4-4. 스케줄링<br>
+&nbsp; &nbsp;4-5. Lock, 2단계 락킹<br>
+&nbsp; &nbsp;4-6. 데드락<br>
+&nbsp; &nbsp;4-7. 고립수준<br>
+5. SQL vs. NoSQL<br>
+&nbsp; &nbsp;5-1. SQL 언어<br>
+&nbsp; &nbsp;5-2. NoSQL의 특징<br>
+</div>
+</details>
+
+*SQL, NoSQL 관련 자료 추후 추가 예정*
 </br><br>
+
 ## 목차
 [데이터베이스란?](#데이터베이스란?)<br>
 [Index](#Index)<br>
